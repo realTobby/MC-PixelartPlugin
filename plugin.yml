@@ -1,3 +1,7 @@
-name: MC-PixelArt
-main: com.github.xsillusx.mcpixelart.PixelArt
+name: MC-PixelartPlugin
+main: com.github.xsillusx.mcpixelart.MCPixelArt
 version: 0.0
+commands:
+  basic:
+    descrption: Blank Test Plugin
+    usage: /basic
