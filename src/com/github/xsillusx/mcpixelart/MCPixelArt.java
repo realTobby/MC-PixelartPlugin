@@ -1,11 +1,16 @@
 package com.github.xsillusx.mcpixelart;
 
+import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
 import java.io.BufferedInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
+
+import javax.imageio.ImageIO;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -63,6 +68,22 @@ public class MCPixelArt extends JavaPlugin {
 		FileOutputStream fos = new FileOutputStream("pictures/test.png");
 		fos.write(response);
 		fos.close();
+		
+		BufferedImage originalImage = ImageIO.read(new File("pictures/test.png"));
+		int type = originalImage.getType() == 0? BufferedImage.TYPE_INT_ARGB : originalImage.getType();
+
+		BufferedImage resizeImagePng = resizeImage(originalImage, type);
+		ImageIO.write(resizeImagePng, "png", new File("pictures/test.png")); 
+		
 	}
+	
+	private static BufferedImage resizeImage(BufferedImage originalImage, int type){
+		BufferedImage resizedImage = new BufferedImage(50, 50, type);
+		Graphics2D g = resizedImage.createGraphics();
+		g.drawImage(originalImage, 0, 0, 50, 50, null);
+		g.dispose();
+			
+		return resizedImage;
+	    }
     
 }
