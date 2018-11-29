@@ -2,6 +2,6 @@ name: MC-PixelartPlugin
 main: com.github.xsillusx.mcpixelart.MCPixelArt
 version: 0.0
 commands:
-  basic:
-    descrption: Blank Test Plugin
-    usage: /basic
+  pixelart:
+    description: Generates a pixelart from a image url
+    usage: /pixelart <url>
