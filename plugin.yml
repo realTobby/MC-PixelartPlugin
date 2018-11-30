@@ -1,6 +1,6 @@
 name: MC-PixelartPlugin
 main: com.github.xsillusx.mcpixelart.MCPixelArt
-version: 0.0
+version: 0.1
 commands:
   pixelart:
     description: Generates a pixelart from a image url
