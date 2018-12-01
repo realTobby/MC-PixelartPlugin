@@ -4,10 +4,7 @@ import java.awt.Color;
 import java.util.ArrayList;
 
 import org.bukkit.Material;
-
-/**
- * Java Code to get a color name from rgb/hex value/awt color
- * 
+/*
  * The part of looking up a color name from the rgb values is edited from
  * https://gist.github.com/nightlark/6482130#file-gistfile1-java (that has some errors) by Ryan Mast (nightlark)
  * 
@@ -16,9 +13,6 @@ import org.bukkit.Material;
  */
 public class ColorUtil {
 
-    /**
-     * Initialize the color list that we have.
-     */
     private ArrayList<ColorName> initColorList() {
         ArrayList<ColorName> colorList = new ArrayList<ColorName>();
         colorList.add(new ColorName("AliceBlue", 0xF0, 0xF8, 0xFF, Material.BLUE_WOOL));
@@ -164,15 +158,10 @@ public class ColorUtil {
         return colorList;
     }
 
-    /**
-     * Get the closest color name from our list
-     * 
-     * @param r
-     * @param g
-     * @param b
-     * @return
-     */
-    public Material getColorNameFromRgb(int r, int g, int b) {
+    public Material getColorNameFromRgb(Color co) {
+    	int r = co.getRed();
+    	int g = co.getGreen();
+    	int b = co.getBlue();
         ArrayList<ColorName> colorList = initColorList();
         ColorName closestMatch = null;
         int minMSE = Integer.MAX_VALUE;
@@ -191,29 +180,7 @@ public class ColorUtil {
             return Material.STONE;
         }
     }
-
-    /**
-     * Convert hexColor to rgb, then call getColorNameFromRgb(r, g, b)
-     * 
-     * @param hexColor
-     * @return
-     */
-
-    public int colorToHex(Color c) {
-        return Integer.decode("0x"
-                + Integer.toHexString(c.getRGB()).substring(2));
-    }
-
-    public Material getColorNameFromColor(Color color) {
-        return getColorNameFromRgb(color.getRed(), color.getGreen(), color.getBlue());
-    }
-
-    /**
-     * SubClass of ColorUtils. In order to lookup color name
-     * 
-     * @author Xiaoxiao Li
-     * 
-     */
+    
     public class ColorName {
         public int r, g, b;
         public String name;

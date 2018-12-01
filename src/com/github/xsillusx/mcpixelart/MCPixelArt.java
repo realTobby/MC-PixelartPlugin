@@ -111,7 +111,7 @@ public class MCPixelArt extends JavaPlugin {
 	private Material GetMaterialByColor(Color c) throws FileNotFoundException {
 		Material mat = Material.STONE;
 		
-		mat = colorToNameUtil.getColorNameFromColor(c);
+		mat = colorToNameUtil.getColorNameFromRgb(c);
 		return mat;
 	}
 	
