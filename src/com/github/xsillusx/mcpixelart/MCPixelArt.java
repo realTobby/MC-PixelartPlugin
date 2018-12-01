@@ -99,9 +99,6 @@ public class MCPixelArt extends JavaPlugin {
 				Color blockColor = new Color(px);
 				Location nextBlock = new Location(w, playerRef.getLocation().getX()+x, playerRef.getLocation().getY()+resizeImagePng.getHeight()-y, playerRef.getLocation().getZ());
 				Material nextMat = GetMaterialByColor(blockColor);
-				
-				if(!allPixels.contains(colorToNameUtil.getColorNameFromColor(blockColor)))
-					allPixels = allPixels + colorToNameUtil.getColorNameFromColor(blockColor) + ",";
 				nextBlock.getBlock().setType(nextMat);
 			}
 		}
@@ -114,127 +111,7 @@ public class MCPixelArt extends JavaPlugin {
 	private Material GetMaterialByColor(Color c) throws FileNotFoundException {
 		Material mat = Material.STONE;
 		
-		String colorname = colorToNameUtil.getColorNameFromColor(c);
-		
-		switch(colorname) {
-		case "Black":
-			mat = Material.BLACK_WOOL;
-			break;
-		case "SaddleBrown":
-			mat = Material.BROWN_WOOL;
-			break;
-		case "DarkOliveGreen":
-			mat = Material.GREEN_WOOL;
-			break;
-		case "IndianRed":
-			mat = Material.RED_WOOL;
-			break;
-		case "PeachPuff":
-			mat = Material.PINK_WOOL;
-			break;
-		case "DimGray":
-			mat = Material.GRAY_WOOL;
-			break;
-		case "Maroon":
-			mat = Material.RED_WOOL;
-			break;
-		case "DarkSlateGray":
-			mat = Material.GRAY_WOOL;
-			break;
-		case "Tan":
-			mat = Material.PINK_WOOL;
-			break;
-		case "Wheat":
-			mat = Material.PINK_WOOL;
-			break;
-		case "BurlyWood":
-			mat = Material.OAK_WOOD;
-			break;
-		case "LightGray":
-			mat = Material.GRAY_WOOL;
-			break;
-		case "White":
-			mat = Material.SNOW_BLOCK;
-			break;
-		case "DarkGray":
-			mat = Material.GRAY_WOOL;
-			break;
-		case "WhiteSmoke":
-			mat = Material.WHITE_WOOL;
-			break;
-		case "Lavender":
-			mat = Material.MAGENTA_WOOL;
-			break;
-		case "LightSlateGray":
-			mat = Material.GRAY_WOOL;
-			break;
-		case "Gainsboro":
-			mat = Material.LIGHT_BLUE_WOOL;
-			break;
-		case "RosyBrown":
-			mat = Material.OAK_WOOD;
-			break;
-		case "NavajoWhite":
-			mat = Material.WHITE_WOOL;
-			break;
-		case "LightPink":
-			mat = Material.PINK_WOOL;
-			break;
-		case "Khaki":
-			mat = Material.GREEN_WOOL;
-			break;
-		case "Peru":
-			mat = Material.ORANGE_WOOL;
-			break;
-		case "OliveDrab":
-			mat = Material.GREEN_WOOL;
-			break;
-		case "DarkKhaki":
-			mat = Material.GREEN_WOOL;
-			break;
-		case "YellowGreen":
-			mat = Material.YELLOW_WOOL;
-			break;
-		case "Sienna":
-			mat = Material.BROWN_WOOL;
-			break;
-		case "SandyBrown":
-			mat = Material.BROWN_WOOL;
-			break;
-		case "DarkGoldenRod":
-			mat = Material.GOLD_BLOCK;
-			break;
-		case "Silver":
-			mat = Material.GRAY_WOOL;
-			break;
-		case "Bisque":
-			mat = Material.PINK_WOOL;
-			break;
-		case "Thistle":
-			mat = Material.PINK_WOOL;
-			break;
-		case "MistyRose":
-			mat = Material.PINK_WOOL;
-			break;
-		case "LightYellow":
-			mat = Material.YELLOW_WOOL;
-			break;
-		case "DarkSalmon":
-			mat = Material.ORANGE_WOOL;
-			break;
-		}
-		
-		
-		if(colorname.toLowerCase().contains("aqua") || colorname.toLowerCase().contains("blue")) {
-			mat = Material.BLUE_WOOL;
-		}
-		if(colorname.toLowerCase().contains("brown")) {
-			mat = Material.BROWN_WOOL;
-		}
-		
-		
-		
-		
+		mat = colorToNameUtil.getColorNameFromColor(c);
 		return mat;
 	}
 	
