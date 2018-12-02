@@ -10,7 +10,6 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.PrintWriter;
 import java.net.URL;
 
 import javax.imageio.ImageIO;
@@ -79,19 +78,18 @@ public class MCPixelArt extends JavaPlugin {
 		out.close();
 		in.close();
 		byte[] response = out.toByteArray();
-		FileOutputStream fos = new FileOutputStream("pictures/test.png");
+		FileOutputStream fos = new FileOutputStream("pictures/imageDownload.png");
 		fos.write(response);
 		fos.close();
 		
-		BufferedImage originalImage = ImageIO.read(new File("pictures/test.png"));
+		BufferedImage originalImage = ImageIO.read(new File("pictures/imageDownload.png"));
 		int type = originalImage.getType() == 0? BufferedImage.TYPE_INT_ARGB : originalImage.getType();
 
 		
 		BufferedImage resizeImagePng = resizeImage(originalImage, type, width, height);
-		ImageIO.write(resizeImagePng, "png", new File("pictures/test.png")); 
+		ImageIO.write(resizeImagePng, "png", new File("pictures/imageDownload.png")); 
 		
 		World w = Bukkit.getWorld("world");
-		String allPixels = "";
 		playerRef.playSound(playerRef.getLocation(), Sound.BLOCK_ANVIL_BREAK, 100f, 50f);
 		for(int y = 0; y < resizeImagePng.getHeight(); y++) {
 			for(int x = 0; x < resizeImagePng.getWidth(); x++) {
@@ -101,10 +99,6 @@ public class MCPixelArt extends JavaPlugin {
 				Material nextMat = GetMaterialByColor(blockColor);
 				nextBlock.getBlock().setType(nextMat);
 			}
-		}
-		
-		try (PrintWriter out1 = new PrintWriter("pictures/pixels.txt")) {
-		    out1.println(allPixels);
 		}
 	}
 	
